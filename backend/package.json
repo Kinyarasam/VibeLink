@@ -6,6 +6,7 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
+    "generate-protos": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=src/proto-gen src/protos/*.proto",
     "grpc:dev": "ts-node src/config/grpcServer.ts"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
     "@grpc/grpc-js": "^1.11.1",
     "@grpc/proto-loader": "^0.7.13",
     "@types/express": "^4.17.21",
+    "@types/ioredis": "^5.0.0",
     "@types/node": "^20.14.12",
     "amqplib": "^0.10.4",
     "express": "^4.19.2",

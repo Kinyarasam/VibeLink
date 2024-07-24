@@ -1,4 +1,4 @@
-// Original file: /Users/kinyarasam/Code/Challenge/VibeLink/backend/src/protos/helloworld.proto
+// Original file: src/protos/helloworld.proto
 
 
 export interface HelloReply {
