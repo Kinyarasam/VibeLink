@@ -15,5 +15,5 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 const helloProto = grpc.loadPackageDefinition(packageDefinition).helloworld as any;
 
 export const getGrpcClient = () => {
-  return new helloProto.Greeter('localhost:50051', grpc.credentials.createInsecure());
+  return new helloProto.Greeter('127.0.0.1:50051', grpc.credentials.createInsecure());
 };

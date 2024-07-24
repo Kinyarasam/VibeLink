@@ -1,27 +1,18 @@
 import express from 'express';
-import { getGrpcClient } from './config/grpcClient';
-import * as grpc from '@grpc/grpc-js'
+import { startGrpcServer } from './config/grpcServer';
+import userRoutes from './routes/userRoutes'
+import { authenticateJWT } from './middlewares/authMiddleware';
+
+startGrpcServer();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use('/api', userRoutes);
 
-const client = getGrpcClient();
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-app.get('/helloworld', (req, res) => {
-  const request = { name: req.query.name || 'World' };;
-  client.sayHello(request, (error: grpc.ServiceError | null, response: any) => {
-    if (error) {
-      res.status(500).send(`Error: ${error.message}`);
-    } else {
-      res.send(`Greetings: ${response.message}`);
-    }
-  })
+app.get('/api/protected', authenticateJWT, (req, res) => {
+  res.json({message: 'Protected route'});
 });
 
 app.listen(port, () => {

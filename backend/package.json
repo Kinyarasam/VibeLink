@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc",
+    "build": "tsc && npm run copy-protos",
     "dev": "nodemon src/index.ts",
+    "copy-protos": "cp -r src/protos dist/protos",
     "generate-protos": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=src/proto-gen src/protos/*.proto",
     "grpc:dev": "ts-node src/config/grpcServer.ts"
   },
@@ -21,11 +22,13 @@
     "@types/node": "^20.14.12",
     "amqplib": "^0.10.4",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.5",
+    "@types/jsonwebtoken": "^9.0.6",
     "nodemon": "^3.1.4"
   }
 }
