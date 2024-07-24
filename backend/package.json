@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "grpc:dev": "ts-node src/config/grpcServer.ts"
   },
   "keywords": [],
   "author": "kinyarasam <skinyara.30@gmail.com>",
